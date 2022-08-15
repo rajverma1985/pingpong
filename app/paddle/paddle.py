@@ -27,4 +27,3 @@ class Line(Paddle):
         super().__init__(pos)
         self.shapesize(stretch_wid=30, stretch_len=0.05)
         self.goto(pos)
-

@@ -1,4 +1,5 @@
 from app.paddle.paddle import Paddle, Line
+from app.scoreboard.scoreboard import Scoreboard
 from app.ball.ball import Ball
 from turtle import Screen
 import time
@@ -13,6 +14,7 @@ screen.tracer(0)
 left_paddle = Paddle((-350, 0))
 right_paddle = Paddle((350, 0))
 line = Line((0, 0))
+score = Scoreboard()
 ball = Ball()
 
 # move the paddles
@@ -34,5 +36,10 @@ while game_on:
     # detect paddle collisions
     if ball.distance(right_paddle) < 50 and ball.xcor() > 320 or ball.distance(left_paddle) < 50 and ball.xcor() < -320:
         ball.bounce_x()
-
+    if ball.xcor() > 380:
+        ball.reset_ball()
+        score.l_point()
+    elif ball.xcor() < -380:
+        ball.reset_ball()
+        score.r_point()
 screen.exitonclick()
